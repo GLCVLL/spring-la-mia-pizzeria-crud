@@ -25,7 +25,7 @@ public class MainController {
 		return "pizzas";
 	}
 	
-	@GetMapping("/pizza/{id}")
+	@GetMapping("/pizzas/{id}")
 	public String getPizza(Model model,
 			@PathVariable int id) {
 		

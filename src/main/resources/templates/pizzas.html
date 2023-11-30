@@ -14,13 +14,9 @@
     <ul>
         <!-- Iterate through the list of pizzas -->
         <li th:each="pizza : ${pizzas}" th:object="${pizza}">
-            <a th:href="@{/pizza/{id}(id=*{id})}">
+            <a th:href="@{/pizzas/{id}(id=*{id})}">
                 <!-- Display pizza details -->
                 <p th:text="${pizza.name}"></p>
-                <p th:text="${pizza.description}"></p>
-                <p th:text="${pizza.price}"></p>
-                <img th:src="${pizza.img}" alt="Pizza Image"/>
-            </a>
         </li>
     </ul>
     </div>
