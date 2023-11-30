@@ -30,7 +30,11 @@ public class MainController {
 			@PathVariable int id) {
 		
 		Pizza pizza = pizzaService.findById(id);
+	    String randomImageUrl = "https://picsum.photos/200/300?random=" + Math.random();
+
 		model.addAttribute("pizza", pizza);
+	    model.addAttribute("randomImageUrl", randomImageUrl);
+
 		
 		return "pizza";
 	}
