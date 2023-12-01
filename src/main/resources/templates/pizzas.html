@@ -12,17 +12,22 @@
     <div class="container">
         <h1>Pizzas:</h1>
         
-        <form th:action="@{/pizzas}" method="get" class="my-4">
-            <label for="searchTitle">Cerca per nome:</label>
-            <input type="text" id="searchTitle" name="searchTitle">
+        <form class="my-4">
+            <label for="search">Cerca per nome:</label>
+            <input type="text" id="search" name="name" th:value="${name}">
             <button class="btn btn-primary" type="submit">Cerca</button>
         </form>
-        <ul>
+        <ul th:if="${not #lists.isEmpty(pizzas)}">
             <li th:each="pizza : ${pizzas}" th:object="${pizza}">
                 <a th:href="@{/pizzas/{id}(id=*{id})}">
                     <p th:text="${pizza.name}"></p>
             </li>
         </ul>
+        
+        <div th:if="${#lists.isEmpty(pizzas)}">
+            <p>Nessuna pizza trovata</p>
+            <a class="btn btn-primary" href="/">Torna indietro</a>
+        </div>
     </div>
 
 

@@ -24,13 +24,14 @@
 	<h1 class="text-center" th:text="|[*{id}] Pizza:|"></h1>
     
     <div class="d-flex justify-content-center align-item-center my-4">
-    <div class="card" style="width: 18rem;">
-    <img th:src="${randomImageUrl}" alt="Pizza Image">  <div class="card-body">
-    <h2>[[*{name}]] </h2>
-    <p class="card-text">[[*{description}]]</p>
-    <p class="card-text">[[*{price}]]</p>
-  </div>
-	</div>
+        <div class="card" style="width: 18rem;">
+            <img th:src="${randomImageUrl}" alt="Pizza Image">  <div class="card-body">
+            <h2>[[*{name}]] </h2>
+            <p class="card-text">[[*{description}]]</p>
+            <p class="card-text">Prezzo: [[*{price}]]€ </p>
+            <a class="btn btn-primary" th:href="@{/}">Torna alla lista Pizze</a>
+        </div>
+    </div>
 </div>
 </div>
     
