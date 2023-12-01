@@ -11,14 +11,18 @@
 
     <div class="container">
         <h1>Pizzas:</h1>
-    <ul>
-        <!-- Iterate through the list of pizzas -->
-        <li th:each="pizza : ${pizzas}" th:object="${pizza}">
-            <a th:href="@{/pizzas/{id}(id=*{id})}">
-                <!-- Display pizza details -->
-                <p th:text="${pizza.name}"></p>
-        </li>
-    </ul>
+        
+        <form th:action="@{/pizzas}" method="get" class="my-4">
+            <label for="searchTitle">Cerca per nome:</label>
+            <input type="text" id="searchTitle" name="searchTitle">
+            <button class="btn btn-primary" type="submit">Cerca</button>
+        </form>
+        <ul>
+            <li th:each="pizza : ${pizzas}" th:object="${pizza}">
+                <a th:href="@{/pizzas/{id}(id=*{id})}">
+                    <p th:text="${pizza.name}"></p>
+            </li>
+        </ul>
     </div>
 
 
