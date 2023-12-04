@@ -7,9 +7,15 @@ import org.java.spring.db.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class MainController {
@@ -42,4 +48,28 @@ public class MainController {
 		
 		return "pizza";
 	}
+	
+
+    @GetMapping("/pizzas/new")
+    public String createPizzaForm(Model model) {
+        Pizza pizza = new Pizza();
+        model.addAttribute("pizza", pizza);
+        return "newPizza";
+    }
+
+    @PostMapping("/pizzas/new")
+    public String createPizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "newPizza";
+        }
+
+        try {
+            pizzaService.save(pizza);
+        } catch (Exception e) {
+            bindingResult.addError(new FieldError("pizza", "name", pizza.getName(), false, null, null, "Custom error message"));
+            return "newPizza";
+        }
+
+        return "redirect:/";
+    }
 }
