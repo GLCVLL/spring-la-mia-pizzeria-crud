@@ -17,6 +17,9 @@
             <input type="text" id="search" name="name" th:value="${name}">
             <button class="btn btn-primary" type="submit">Cerca</button>
         </form>
+        
+        <a class="btn btn-success" href="/pizzas/create">Crea una nuova Pizza</a>
+        
         <ul th:if="${not #lists.isEmpty(pizzas)}">
             <li th:each="pizza : ${pizzas}" th:object="${pizza}">
                 <a th:href="@{/pizzas/{id}(id=*{id})}">
