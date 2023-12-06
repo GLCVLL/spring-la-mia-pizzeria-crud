@@ -59,6 +59,10 @@ public class MainController {
 
     @PostMapping("/pizzas/new")
     public String createPizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
+    	return savePizza(pizza, bindingResult, model);
+    }
+    
+    private String savePizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "newPizza";
         }
@@ -72,4 +76,5 @@ public class MainController {
 
         return "redirect:/";
     }
+
 }
