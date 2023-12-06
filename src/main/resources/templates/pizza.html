@@ -29,7 +29,12 @@
             <h2>[[*{name}]] </h2>
             <p class="card-text">[[*{description}]]</p>
             <p class="card-text">Prezzo: [[*{price}]]€ </p>
-            <a class="btn btn-warning my-3" th:href="@{/pizzas/edit/{id} (id=*{id})}">Modifica</a>
+            <div class="d-flex my-3">
+				<a class="btn btn-warning me-2" th:href="@{/pizzas/edit/{id} (id=*{id})}">Modifica</a>
+                <form th:action="@{/pizzas/delete/{id} (id=*{id})}" method="POST">
+                      <input type="submit" value="DELETE" class="btn btn-danger">
+                </form>
+			</div>
             <a class="btn btn-primary" th:href="@{/}">Torna alla lista Pizze</a>
         </div>
     </div>
