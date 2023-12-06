@@ -29,6 +29,7 @@
             <h2>[[*{name}]] </h2>
             <p class="card-text">[[*{description}]]</p>
             <p class="card-text">Prezzo: [[*{price}]]€ </p>
+            <a class="btn btn-warning my-3" th:href="@{/pizzas/edit/{id} (id=*{id})}">Modifica</a>
             <a class="btn btn-primary" th:href="@{/}">Torna alla lista Pizze</a>
         </div>
     </div>

@@ -12,7 +12,7 @@
 	<div class="container">
     <h1>Crea Nuova Pizza</h1>
     
-    <form method="post" action="/pizzas/new" th:object="${pizza}" th:action="@{/pizzas/new}">
+    <form method="post" th:object="${pizza}">
         <div class="mb-3">
             <label for="name" class="form-label">Nome:</label>
             <input type="text" class="form-control" id="name" name="name" th:field="*{name}" >

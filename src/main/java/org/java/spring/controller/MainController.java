@@ -62,6 +62,18 @@ public class MainController {
     	return savePizza(pizza, bindingResult, model);
     }
     
+    @GetMapping("/pizzas/edit/{id}")
+    public String editPizza(Model model, @PathVariable int id) {
+        Pizza pizza = pizzaService.findById(id);
+        model.addAttribute("pizza", pizza);
+        return "newPizza";
+    }
+
+    @PostMapping("/pizzas/edit/{id}")
+    public String updatePizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
+        return savePizza(pizza, bindingResult, model);
+    }
+    
     private String savePizza(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "newPizza";
